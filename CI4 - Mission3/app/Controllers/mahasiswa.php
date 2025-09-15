@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\mahasiswamodel;
+use App\Models\MahasiswaModel;
 
-class mahasiswa extends BaseController
+class Mahasiswa extends BaseController
 {
     public function index()
     {
