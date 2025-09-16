@@ -38,3 +38,9 @@ $routes->group('admin', ['filter' => 'auth:admin'], function ($routes) {
     $routes->post('students/update/(:num)', 'Admin::updateStudent/$1');
     $routes->get('students/delete/(:num)', 'Admin::deleteStudent/$1');
 });
+
+// Enrollment Management
+$routes->get('/enrollment', 'Enrollment::index');
+$routes->post('/enrollment/store', 'Enrollment::store');
+$routes->get('/enrollment/delete/(:num)', 'Enrollment::delete/$1');
+
