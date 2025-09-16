@@ -1,4 +1,16 @@
-<h2>Selamat datang di Dashboard Mahasiswa</h2>
-<p>Halo, <?= session()->get('username'); ?> (<?= session()->get('role'); ?>)</p>
-<a href="/student/courses">Lihat Courses</a> |
-<a href="/logout">Logout</a>
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
+
+<div class="card shadow">
+    <div class="card-header">
+        <h4>Dashboard Mahasiswa</h4>
+    </div>
+    <div class="card-body">
+        <p>Selamat datang, <b><?= session()->get('nama') ?? 'Mahasiswa' ?></b>!</p>
+        <div class="list-group">
+            <a href="/student/courses" class="list-group-item list-group-item-action">Lihat Courses</a>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>

@@ -1,5 +1,17 @@
-<h2>Selamat datang di Dashboard Admin</h2>
-<p>Halo, <?= session()->get('username'); ?> (<?= session()->get('role'); ?>)</p>
-<a href="/admin/courses">Kelola Courses</a> |
-<a href="/admin/students">Kelola Mahasiswa</a> |
-<a href="/logout">Logout</a>
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
+
+<div class="card shadow">
+    <div class="card-header">
+        <h4>Dashboard Admin</h4>
+    </div>
+    <div class="card-body">
+        <p>Selamat datang, <b>Admin</b>!</p>
+        <div class="list-group">
+            <a href="/admin/courses" class="list-group-item list-group-item-action">Kelola Courses</a>
+            <a href="/admin/students" class="list-group-item list-group-item-action">Kelola Mahasiswa</a>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>

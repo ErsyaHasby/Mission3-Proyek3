@@ -639,3 +639,214 @@ in APPPATH\Views\admin\students\index.php on line 18.
 11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
 DEBUG - 2025-09-16 14:17:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:23:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:23:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-16 14:23:14 --> mysqli_sql_exception: Unknown column 'c.name' in 'field list' in C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\app\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+#6 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+#7 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\rewrite.php(44): require_once('C:\\Users\\Ersya ...')
+#12 {main}
+CRITICAL - 2025-09-16 14:23:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.name' in 'field list'
+[Method: GET, Route: student/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 2 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+CRITICAL - 2025-09-16 14:23:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 4 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+CRITICAL - 2025-09-16 14:23:14 --> [Caused by] mysqli_sql_exception: Unknown column 'c.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 5 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+DEBUG - 2025-09-16 14:24:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:24:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:24:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-16 14:24:39 --> mysqli_sql_exception: Unknown column 'c.name' in 'field list' in C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\app\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+#6 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+#7 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Users\Ersya Hasby Satria\Documents\GitHub\Mission3-Proyek3\CI4 - Mission3\system\rewrite.php(44): require_once('C:\\Users\\Ersya ...')
+#12 {main}
+CRITICAL - 2025-09-16 14:24:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.name' in 'field list'
+[Method: GET, Route: student/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 2 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+CRITICAL - 2025-09-16 14:24:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 4 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+CRITICAL - 2025-09-16 14:24:39 --> [Caused by] mysqli_sql_exception: Unknown column 'c.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`, `c`.`name`, `c`.`description`
+FROM `enrollments` `e`
+JOIN `courses` `c` ON `c`.`id` = `e`.`course_id`
+WHERE `e`.`student_id` IS NULL', [], false)
+ 5 APPPATH\Controllers\Student.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+DEBUG - 2025-09-16 14:28:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-16 14:29:01 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "student/courses.php"
+[Method: GET, Route: student/courses]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('student/courses.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('student/courses', [], true)
+ 3 APPPATH\Controllers\Student.php(19): view('student/courses', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->courses()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+DEBUG - 2025-09-16 14:29:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:29:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:41:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-16 14:42:29 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "student/courses.php"
+[Method: GET, Route: student/courses]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('student/courses.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('student/courses', [], true)
+ 3 APPPATH\Controllers\Student.php(19): view('student/courses', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Student->courses()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Student))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+DEBUG - 2025-09-16 14:42:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
