@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistem Akademik</title>
-</head>
+<h3 class="text-center mb-4">Login Sistem Akademik</h3>
 
-<body>
-    <h2>Login Sistem Akademik</h2>
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
 
-    <?php if (session()->getFlashdata('error')): ?>
-        <p style="color:red;"><?= session()->getFlashdata('error'); ?></p>
-    <?php endif; ?>
+<form method="post" action="/auth/login" class="mx-auto" style="max-width: 400px;">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required>
+    </div>
 
-    <form action="<?= base_url('/login/process') ?>" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" name="username" required><br><br>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
 
-        <label for="password">Password:</label><br>
-        <input type="password" name="password" required><br><br>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+</form>
 
-        <button type="submit">Login</button>
-    </form>
-</body>
-
-</html>
+<?= $this->endSection() ?>
