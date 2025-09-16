@@ -9,7 +9,7 @@
     </div>
 <?php endif; ?>
 
-<form method="post" action="/auth/login" class="mx-auto" style="max-width: 400px;">
+<form method="post" action="/login" class="mx-auto" style="max-width: 400px;">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" name="username" class="form-control" required>

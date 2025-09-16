@@ -3,13 +3,25 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use CodeIgniter\Controller;
 
-class Auth extends Controller
+class Auth extends BaseController
 {
     public function index()
     {
-        return view('auth/login');
+        $session = session();
+
+        // ✅ Kalau sudah login, langsung redirect sesuai role
+        if ($session->get('logged_in')) {
+            return $session->get('role') === 'student'
+                ? redirect()->to('/student/dashboard')
+                : redirect()->to('/admin/dashboard');
+        }
+
+        // ✅ Cegah cache di halaman login
+        $this->response->setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        $this->response->setHeader('Pragma', 'no-cache');
+
+        return view('auth/login', ['title' => 'Login']);
     }
 
     public function login()
@@ -24,20 +36,18 @@ class Auth extends Controller
 
         if ($user && password_verify($password, $user['password'])) {
             $session->set([
-                'id' => $user['id'],
+                'user_id' => $user['id'],
                 'username' => $user['username'],
                 'role' => $user['role'],
-                'isLoggedIn' => true
+                'logged_in' => true,   // samakan dengan AuthFilter
             ]);
 
-            // redirect sesuai role
-            if ($user['role'] === 'student') {
-                return redirect()->to('/student/dashboard');
-            } else {
-                return redirect()->to('/admin/dashboard');
-            }
+            // Redirect sesuai role
+            return $user['role'] === 'student'
+                ? redirect()->to('/student/dashboard')
+                : redirect()->to('/admin/dashboard');
         } else {
-            $session->setFlashdata('error', 'Username atau password salah');
+            $session->setFlashdata('error', 'Username atau password salah!');
             return redirect()->back();
         }
     }

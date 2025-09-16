@@ -10,9 +10,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Auth
-$routes->get('/login', 'Auth::login');
-$routes->post('/login/process', 'Auth::loginProcess');
-$routes->get('/logout', 'Auth::logout');
+$routes->get('/login', 'Auth::index');        // tampilkan form login
+$routes->post('/login', 'Auth::login');       // proses login
+$routes->get('/logout', 'Auth::logout');      // logout
 
 // Student
 $routes->group('student', ['filter' => 'auth:student'], function ($routes) {
