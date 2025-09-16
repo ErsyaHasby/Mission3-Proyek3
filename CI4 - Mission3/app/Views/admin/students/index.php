@@ -10,13 +10,13 @@
     </tr>
     <?php foreach ($students as $s): ?>
         <tr>
-            <td><?= $s['id']; ?></td>
-            <td><?= $s['nim']; ?></td>
-            <td><?= $s['nama']; ?></td>
-            <td><?= $s['umur']; ?></td>
+            <td><?= $s['id'] ?></td>
+            <td><?= $s['NIM'] ?></td>
+            <td><?= $s['nama'] ?></td>
+            <td><?= $s['umur'] ?></td>
             <td>
-                <a href="/admin/students/edit/<?= $s['id']; ?>">Edit</a> |
-                <a href="/admin/students/delete/<?= $s['id']; ?>" onclick="return confirm('Yakin hapus?')">Delete</a>
+                <a href="/admin/students/edit/<?= $s['id'] ?>">Edit</a> |
+                <a href="/admin/students/delete/<?= $s['id'] ?>" onclick="return confirm('Yakin?')">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

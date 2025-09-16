@@ -9,5 +9,7 @@ class MahasiswaModel extends Model
     protected $table = 'mahasiswa';
     protected $primaryKey = 'id';
     protected $allowedFields = ['NIM', 'nama', 'umur'];
-    public $timestamps = false;
+
+    // otomatis handle created_at & updated_at
+    protected $useTimestamps = true;
 }

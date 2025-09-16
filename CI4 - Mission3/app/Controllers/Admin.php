@@ -8,7 +8,7 @@ use App\Models\MahasiswaModel;
 
 class Admin extends BaseController
 {
-    // Dashboard
+    // ===================== DASHBOARD =====================
     public function dashboard()
     {
         return view('admin/dashboard', [
@@ -63,7 +63,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/courses')->with('success', 'Course berhasil dihapus');
     }
 
-    // ===================== STUDENTS =====================
+    // ===================== STUDENTS (MAHASISWA) =====================
     public function students()
     {
         $model = new MahasiswaModel();
@@ -80,11 +80,11 @@ class Admin extends BaseController
     {
         $model = new MahasiswaModel();
         $model->save([
-            'nim' => $this->request->getPost('nim'),
+            'NIM' => $this->request->getPost('NIM'),
             'nama' => $this->request->getPost('nama'),
             'umur' => $this->request->getPost('umur'),
         ]);
-        return redirect()->to('/admin/students')->with('success', 'Student berhasil ditambahkan');
+        return redirect()->to('/admin/students')->with('success', 'Mahasiswa berhasil ditambahkan');
     }
 
     public function editStudent($id)
@@ -98,17 +98,17 @@ class Admin extends BaseController
     {
         $model = new MahasiswaModel();
         $model->update($id, [
-            'nim' => $this->request->getPost('nim'),
+            'NIM' => $this->request->getPost('NIM'),
             'nama' => $this->request->getPost('nama'),
             'umur' => $this->request->getPost('umur'),
         ]);
-        return redirect()->to('/admin/students')->with('success', 'Student berhasil diperbarui');
+        return redirect()->to('/admin/students')->with('success', 'Mahasiswa berhasil diperbarui');
     }
 
     public function deleteStudent($id)
     {
         $model = new MahasiswaModel();
         $model->delete($id);
-        return redirect()->to('/admin/students')->with('success', 'Student berhasil dihapus');
+        return redirect()->to('/admin/students')->with('success', 'Mahasiswa berhasil dihapus');
     }
 }
