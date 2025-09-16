@@ -12,12 +12,12 @@ class AuthFilter implements FilterInterface
     {
         $session = session();
 
-        // ✅ Cek login
+        // 🔒 Cek login
         if (!$session->get('logged_in')) {
             return redirect()->to('/login')->with('error', 'Silakan login dulu!');
         }
 
-        // ✅ Kalau ada role spesifik (admin/student)
+        // 🔒 Cek role jika diminta (misal: auth:admin atau auth:student)
         if ($arguments && isset($arguments[0])) {
             $requiredRole = $arguments[0];
             if ($session->get('role') !== $requiredRole) {
@@ -28,6 +28,6 @@ class AuthFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Tidak perlu dipakai
+        // Tidak dipakai, tapi bisa untuk misalnya mencegah akses balik ke /login kalau sudah login
     }
 }

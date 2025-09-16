@@ -6,13 +6,13 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// Default
-$routes->get('/', 'Home::index');
+// Default: arahkan ke login
+$routes->get('/', 'Auth::index');
 
 // Auth
-$routes->get('/login', 'Auth::index');        // tampilkan form login
-$routes->post('/login', 'Auth::login');       // proses login
-$routes->get('/logout', 'Auth::logout');      // logout
+$routes->get('/login', 'Auth::index');    // tampilkan form login
+$routes->post('/login', 'Auth::login');   // proses login
+$routes->get('/logout', 'Auth::logout');  // logout
 
 // Student
 $routes->group('student', ['filter' => 'auth:student'], function ($routes) {
