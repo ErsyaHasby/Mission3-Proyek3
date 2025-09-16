@@ -1,0 +1,23 @@
+<h2>Daftar Mahasiswa</h2>
+<a href="/admin/students/create">Tambah Mahasiswa</a>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>Umur</th>
+        <th>Aksi</th>
+    </tr>
+    <?php foreach ($students as $s): ?>
+        <tr>
+            <td><?= $s['id']; ?></td>
+            <td><?= $s['nim']; ?></td>
+            <td><?= $s['nama']; ?></td>
+            <td><?= $s['umur']; ?></td>
+            <td>
+                <a href="/admin/students/edit/<?= $s['id']; ?>">Edit</a> |
+                <a href="/admin/students/delete/<?= $s['id']; ?>" onclick="return confirm('Yakin hapus?')">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
