@@ -17,6 +17,7 @@
             <td>
                 <a href="/admin/students/edit/<?= $s['id'] ?>">Edit</a> |
                 <a href="/admin/students/delete/<?= $s['id'] ?>" onclick="return confirm('Yakin?')">Delete</a>
+                <a href="/admin/students/detail/<?= $s['id'] ?>">View Detail</a>
             </td>
         </tr>
     <?php endforeach; ?>

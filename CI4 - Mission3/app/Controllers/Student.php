@@ -26,4 +26,32 @@ class Student extends BaseController
         // nanti implementasi insert ke tabel enrollments
         return redirect()->to('/student/courses')->with('success', 'Berhasil enroll ke course!');
     }
+
+
+    public function detail($id)
+    {
+        $mahasiswaModel = new \App\Models\MahasiswaModel();
+        $courseModel = new \App\Models\CourseModel();
+        $db = \Config\Database::connect();
+
+        // ambil data mahasiswa
+        $student = $mahasiswaModel->find($id);
+
+        if (!$student) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Mahasiswa dengan ID $id tidak ditemukan");
+        }
+
+        // ambil courses yg sudah di-enroll (join enrollments + courses)
+        $builder = $db->table('enrollments e')
+            ->select('c.id, c.name, c.description')
+            ->join('courses c', 'c.id = e.course_id')
+            ->where('e.student_id', $id);
+        $courses = $builder->get()->getResult();
+
+        return view('admin/students/detail', [
+            'student' => $student,
+            'courses' => $courses
+        ]);
+    }
+
 }

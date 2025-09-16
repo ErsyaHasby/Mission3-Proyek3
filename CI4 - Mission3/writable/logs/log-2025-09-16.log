@@ -614,3 +614,28 @@ DEBUG - 2025-09-16 13:38:12 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-09-16 13:38:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-09-16 13:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-09-16 13:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 13:55:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 13:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 13:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 13:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:15:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:15:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-16 14:16:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-16 14:16:06 --> ErrorException: Undefined variable $student
+[Method: GET, Route: admin/students]
+in APPPATH\Views\admin\students\index.php on line 18.
+ 1 APPPATH\Views\admin\students\index.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $student', 'C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\app\\Views\\admin\\students\\index.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\app\\Views\\admin\\students\\index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('admin/students/index', [], true)
+ 5 APPPATH\Controllers\Admin.php(71): view('admin/students/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->students()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Ersya Hasby Satria\\Documents\\GitHub\\Mission3-Proyek3\\CI4 - Mission3\\public\\index.php')
+DEBUG - 2025-09-16 14:17:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
