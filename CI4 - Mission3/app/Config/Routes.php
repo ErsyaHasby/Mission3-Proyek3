@@ -5,12 +5,36 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('home', 'Home::index');
-$routes->get('mahasiswa', 'mahasiswa::index');
-$routes->get('mahasiswa/detail/(:num)', 'mahasiswa::detail/$1');
+
+// Default
+$routes->get('/', 'Home::index');
+
+// Auth
 $routes->get('/login', 'Auth::login');
 $routes->post('/login/process', 'Auth::loginProcess');
 $routes->get('/logout', 'Auth::logout');
-$routes->get('student/dashboard', 'Student::dashboard');
-$routes->get('admin/dashboard', 'Admin::dashboard');
 
+// Student
+$routes->group('student', ['filter' => 'auth:student'], function ($routes) {
+    $routes->get('dashboard', 'Student::dashboard');
+    $routes->get('courses', 'Student::courses');
+    $routes->get('enroll/(:num)', 'Student::enroll/$1');
+});
+
+// Admin
+$routes->group('admin', ['filter' => 'auth:admin'], function ($routes) {
+    $routes->get('dashboard', 'Admin::dashboard');
+    $routes->get('courses', 'Admin::courses');
+    $routes->get('courses/create', 'Admin::createCourse');
+    $routes->post('courses/store', 'Admin::storeCourse');
+    $routes->get('courses/edit/(:num)', 'Admin::editCourse/$1');
+    $routes->post('courses/update/(:num)', 'Admin::updateCourse/$1');
+    $routes->get('courses/delete/(:num)', 'Admin::deleteCourse/$1');
+
+    $routes->get('students', 'Admin::students');
+    $routes->get('students/create', 'Admin::createStudent');
+    $routes->post('students/store', 'Admin::storeStudent');
+    $routes->get('students/edit/(:num)', 'Admin::editStudent/$1');
+    $routes->post('students/update/(:num)', 'Admin::updateStudent/$1');
+    $routes->get('students/delete/(:num)', 'Admin::deleteStudent/$1');
+});

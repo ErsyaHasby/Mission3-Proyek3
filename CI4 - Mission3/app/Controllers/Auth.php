@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\UserModel;
 
-class Auth extends BaseController
+use App\Models\UserModel;
+use CodeIgniter\Controller;
+
+class Auth extends Controller
 {
-    public function login()
+    public function index()
     {
-        helper(['form']);
         return view('auth/login');
     }
 
-    public function loginProcess()
+    public function login()
     {
         $session = session();
         $model = new UserModel();
@@ -21,26 +22,23 @@ class Auth extends BaseController
 
         $user = $model->where('username', $username)->first();
 
-        if ($user) {
-            if (password_verify($password, $user['password'])) {
-                $session->set([
-                    'user_id' => $user['id'],
-                    'username' => $user['username'],
-                    'role' => $user['role'],
-                    'logged_in' => true
-                ]);
+        if ($user && password_verify($password, $user['password'])) {
+            $session->set([
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'role' => $user['role'],
+                'isLoggedIn' => true
+            ]);
 
-                // Redirect sesuai role
-                if ($user['role'] === 'admin') {
-                    return redirect()->to('/admin/dashboard');
-                } else {
-                    return redirect()->to('/student/dashboard');
-                }
+            // redirect sesuai role
+            if ($user['role'] === 'student') {
+                return redirect()->to('/student/dashboard');
             } else {
-                return redirect()->back()->with('error', 'Password salah');
+                return redirect()->to('/admin/dashboard');
             }
         } else {
-            return redirect()->back()->with('error', 'Username tidak ditemukan');
+            $session->setFlashdata('error', 'Username atau password salah');
+            return redirect()->back();
         }
     }
 
