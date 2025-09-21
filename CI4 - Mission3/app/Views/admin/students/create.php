@@ -1,10 +1,27 @@
-<h2>Tambah Mahasiswa</h2>
-<form method="post" action="/admin/students/store">
-    <label>NIM</label><br>
-    <input type="text" name="NIM"><br>
-    <label>Nama</label><br>
-    <input type="text" name="nama"><br>
-    <label>Umur</label><br>
-    <input type="number" name="umur"><br>
-    <button type="submit">Simpan</button>
-</form>
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
+
+<div class="card shadow">
+    <div class="card-header">
+        <h4>Tambah Mahasiswa</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" action="/admin/students/store">
+            <div class="mb-3">
+                <label for="NIM" class="form-label">NIM</label>
+                <input type="text" name="NIM" id="NIM" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" name="nama" id="nama" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="umur" class="form-label">Umur</label>
+                <input type="number" name="umur" id="umur" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+    </div>
+</div>
+
+<?= $this->endSection() ?>
