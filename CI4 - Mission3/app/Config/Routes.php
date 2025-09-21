@@ -37,21 +37,10 @@ $routes->group('admin', ['filter' => 'auth:admin'], function ($routes) {
     $routes->get('students/edit/(:num)', 'Admin::editStudent/$1');
     $routes->post('students/update/(:num)', 'Admin::updateStudent/$1');
     $routes->get('students/delete/(:num)', 'Admin::deleteStudent/$1');
+    $routes->get('students/detail/(:num)', 'Admin::detail/$1'); // Route untuk detail mahasiswa
 });
 
 // Enrollment Management
-$routes->get('/enrollment', 'Enrollment::index');
-$routes->post('/enrollment/store', 'Enrollment::store');
-$routes->get('/enrollment/delete/(:num)', 'Enrollment::delete/$1');
-
-$routes->group('admin', function ($routes) {
-    $routes->get('students', 'Admin\Students::index');
-    $routes->get('students/create', 'Admin\Students::create');
-    $routes->post('students/store', 'Admin\Students::store');
-    $routes->get('students/edit/(:num)', 'Admin\Students::edit/$1');
-    $routes->post('students/update/(:num)', 'Admin\Students::update/$1');
-    $routes->get('students/delete/(:num)', 'Admin\Students::delete/$1');
-
-    // ✅ route baru untuk detail mahasiswa
-    $routes->get('students/detail/(:num)', 'Admin\Students::detail/$1');
-});
+$routes->get('/enrollment', 'Enrollment::index', ['filter' => 'auth:admin']);
+$routes->post('/enrollment/store', 'Enrollment::store', ['filter' => 'auth:admin']);
+$routes->get('/enrollment/delete/(:num)', 'Enrollment::delete/$1', ['filter' => 'auth:admin']);
