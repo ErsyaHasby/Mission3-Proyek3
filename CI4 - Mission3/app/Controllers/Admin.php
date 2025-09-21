@@ -111,4 +111,31 @@ class Admin extends BaseController
         $model->delete($id);
         return redirect()->to('/admin/students')->with('success', 'Mahasiswa berhasil dihapus');
     }
+
+    public function detail($id)
+    {
+        $mahasiswaModel = new MahasiswaModel();
+        $enrollmentModel = new EnrollmentModel();
+        $courseModel = new CourseModel();
+
+        // Ambil data mahasiswa
+        $student = $mahasiswaModel->find($id);
+        if (!$student) {
+            return redirect()->to('/admin/students')->with('error', 'Mahasiswa tidak ditemukan');
+        }
+
+        // Ambil course yang diambil mahasiswa
+        $courses = $enrollmentModel
+            ->select('courses.id, courses.title, courses.description')
+            ->join('courses', 'courses.id = enrollments.course_id')
+            ->where('enrollments.user_id', $id)
+            ->findAll();
+
+        return view('admin/students/detail', [
+            'title' => 'Detail Mahasiswa',
+            'student' => $student,
+            'courses' => $courses
+        ]);
+    }
 }
+
