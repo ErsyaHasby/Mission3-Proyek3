@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CourseModel;
+use App\Models\EnrollmentModel;
+use Config\Database;
 
 class Student extends BaseController
 {
@@ -15,43 +18,50 @@ class Student extends BaseController
 
     public function courses()
     {
-        // nanti ambil data dari tabel courses
+        $courseModel = new CourseModel();
+        $enrollmentModel = new EnrollmentModel();
+        $db = Database::connect();
+
+        $studentId = session()->get('user_id'); // ambil id mahasiswa yg login
+
+        // semua courses
+        $allCourses = $courseModel->findAll();
+
+        // course yang sudah diambil mahasiswa ini
+        $takenCourses = $db->table('enrollments e')
+            ->select('c.id, c.title, c.description')
+            ->join('courses c', 'c.id = e.course_id')
+            ->where('e.student_id', $studentId)
+            ->get()->getResultArray();
+
         return view('student/courses', [
-            'title' => 'Daftar Courses'
+            'title' => 'Daftar Courses',
+            'allCourses' => $allCourses,
+            'takenCourses' => $takenCourses
         ]);
     }
 
     public function enroll($courseId)
     {
-        // nanti implementasi insert ke tabel enrollments
-        return redirect()->to('/student/courses')->with('success', 'Berhasil enroll ke course!');
-    }
+        $studentId = session()->get('user_id');
+        $enrollmentModel = new EnrollmentModel();
 
+        // cek apakah sudah pernah enroll course ini
+        $exists = $enrollmentModel
+            ->where('student_id', $studentId)
+            ->where('course_id', $courseId)
+            ->first();
 
-    public function detail($id)
-    {
-        $mahasiswaModel = new \App\Models\MahasiswaModel();
-        $courseModel = new \App\Models\CourseModel();
-        $db = \Config\Database::connect();
-
-        // ambil data mahasiswa
-        $student = $mahasiswaModel->find($id);
-
-        if (!$student) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Mahasiswa dengan ID $id tidak ditemukan");
+        if ($exists) {
+            return redirect()->to('/student/courses')->with('error', 'Anda sudah enroll course ini.');
         }
 
-        // ambil courses yg sudah di-enroll (join enrollments + courses)
-        $builder = $db->table('enrollments e')
-            ->select('c.id, c.name, c.description')
-            ->join('courses c', 'c.id = e.course_id')
-            ->where('e.student_id', $id);
-        $courses = $builder->get()->getResult();
-
-        return view('admin/students/detail', [
-            'student' => $student,
-            'courses' => $courses
+        // simpan enroll baru
+        $enrollmentModel->save([
+            'student_id' => $studentId,
+            'course_id' => $courseId,
         ]);
-    }
 
+        return redirect()->to('/student/courses')->with('success', 'Berhasil enroll ke course!');
+    }
 }
