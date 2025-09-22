@@ -1,3 +1,4 @@
+```php
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
 
@@ -10,6 +11,7 @@
         <div class="list-group">
             <a href="/admin/courses" class="list-group-item list-group-item-action">Kelola Courses</a>
             <a href="/admin/students" class="list-group-item list-group-item-action">Kelola Mahasiswa</a>
+            <a href="/logout" class="list-group-item list-group-item-action text-danger">Logout</a>
         </div>
     </div>
 </div>

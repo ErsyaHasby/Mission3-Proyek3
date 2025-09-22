@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CourseModel;
 use App\Models\EnrollmentModel;
+use App\Models\MahasiswaModel;
 use Config\Database;
 
 class Student extends BaseController
@@ -22,7 +23,7 @@ class Student extends BaseController
         $enrollmentModel = new EnrollmentModel();
         $db = Database::connect();
 
-        $userId = session()->get('user_id'); // Gunakan user_id
+        $userId = session()->get('user_id');
 
         // Semua courses
         $allCourses = $courseModel->findAll();
@@ -31,7 +32,7 @@ class Student extends BaseController
         $takenCourses = $db->table('enrollments e')
             ->select('c.id, c.title, c.description')
             ->join('courses c', 'c.id = e.course_id')
-            ->where('e.user_id', $userId) // Ubah ke user_id
+            ->where('e.user_id', $userId)
             ->get()->getResultArray();
 
         return view('student/courses', [
@@ -43,12 +44,12 @@ class Student extends BaseController
 
     public function enroll($courseId)
     {
-        $userId = session()->get('user_id'); // Ubah ke user_id
+        $userId = session()->get('user_id');
         $enrollmentModel = new EnrollmentModel();
 
         // Cek apakah sudah pernah enroll course ini
         $exists = $enrollmentModel
-            ->where('user_id', $userId) // Ubah ke user_id
+            ->where('user_id', $userId)
             ->where('course_id', $courseId)
             ->first();
 
@@ -58,11 +59,26 @@ class Student extends BaseController
 
         // Simpan enroll baru
         $enrollmentModel->save([
-            'user_id' => $userId, // Ubah ke user_id
+            'user_id' => $userId,
             'course_id' => $courseId,
             'enrolled_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->to('/student/courses')->with('success', 'Berhasil enroll ke course!');
+    }
+
+    public function profile()
+    {
+        $mahasiswaModel = new MahasiswaModel();
+        $student = $mahasiswaModel->where('id', session()->get('user_id'))->first();
+
+        if (!$student) {
+            return redirect()->to('/student/dashboard')->with('error', 'Data mahasiswa tidak ditemukan');
+        }
+
+        return view('student/profile', [
+            'title' => 'Data Diri Mahasiswa',
+            'student' => $student
+        ]);
     }
 }
