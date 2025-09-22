@@ -22,16 +22,16 @@ class Student extends BaseController
         $enrollmentModel = new EnrollmentModel();
         $db = Database::connect();
 
-        $studentId = session()->get('user_id'); // ambil id mahasiswa yg login
+        $userId = session()->get('user_id'); // Gunakan user_id
 
-        // semua courses
+        // Semua courses
         $allCourses = $courseModel->findAll();
 
-        // course yang sudah diambil mahasiswa ini
+        // Course yang sudah diambil mahasiswa ini
         $takenCourses = $db->table('enrollments e')
             ->select('c.id, c.title, c.description')
             ->join('courses c', 'c.id = e.course_id')
-            ->where('e.student_id', $studentId)
+            ->where('e.user_id', $userId) // Ubah ke user_id
             ->get()->getResultArray();
 
         return view('student/courses', [
@@ -43,12 +43,12 @@ class Student extends BaseController
 
     public function enroll($courseId)
     {
-        $studentId = session()->get('user_id');
+        $userId = session()->get('user_id'); // Ubah ke user_id
         $enrollmentModel = new EnrollmentModel();
 
-        // cek apakah sudah pernah enroll course ini
+        // Cek apakah sudah pernah enroll course ini
         $exists = $enrollmentModel
-            ->where('student_id', $studentId)
+            ->where('user_id', $userId) // Ubah ke user_id
             ->where('course_id', $courseId)
             ->first();
 
@@ -56,10 +56,11 @@ class Student extends BaseController
             return redirect()->to('/student/courses')->with('error', 'Anda sudah enroll course ini.');
         }
 
-        // simpan enroll baru
+        // Simpan enroll baru
         $enrollmentModel->save([
-            'student_id' => $studentId,
+            'user_id' => $userId, // Ubah ke user_id
             'course_id' => $courseId,
+            'enrolled_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->to('/student/courses')->with('success', 'Berhasil enroll ke course!');

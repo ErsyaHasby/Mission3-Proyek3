@@ -1,3 +1,4 @@
+```php
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
 
@@ -6,12 +7,10 @@
         <h4>Dashboard Mahasiswa</h4>
     </div>
     <div class="card-body">
-        <p>Selamat datang, <b><?= session()->get('username') ?? 'Mahasiswa' ?></b>!</p>
-        <!-- Ubah dari 'nama' ke 'username' karena session pakai 'username' -->
+        <p>Selamat datang, <b><?= esc(session()->get('username') ?? 'Mahasiswa') ?></b>!</p>
         <div class="list-group">
             <a href="/student/courses" class="list-group-item list-group-item-action">Lihat Courses</a>
-            <a href="/student/courses" class="list-group-item list-group-item-action">Enroll Courses Baru</a>
-            <!-- Navigasi baru, mengarah ke halaman yang sama -->
+            <a href="/student/courses" class="list-group-item list-group-item-action">Enroll Course Baru</a>
         </div>
     </div>
 </div>
