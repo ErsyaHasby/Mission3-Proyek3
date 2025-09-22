@@ -1,3 +1,4 @@
+```php
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
 
@@ -14,7 +15,7 @@
 
                 <form action="/login" method="post">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username/NIM</label>
+                        <label for="username" class="form-label">Username (Admin) / NIM (Mahasiswa)</label>
                         <input type="text" name="username" class="form-control" required>
                     </div>
                     <div class="mb-3">
