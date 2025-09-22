@@ -1,3 +1,4 @@
+```php
 <?php
 
 use CodeIgniter\Router\RouteCollection;
@@ -19,6 +20,7 @@ $routes->group('student', ['filter' => 'auth:student'], function ($routes) {
     $routes->get('dashboard', 'Student::dashboard');
     $routes->get('courses', 'Student::courses');
     $routes->get('enroll/(:num)', 'Student::enroll/$1');
+    $routes->get('profile', 'Student::profile');
 });
 
 // Admin
@@ -37,7 +39,7 @@ $routes->group('admin', ['filter' => 'auth:admin'], function ($routes) {
     $routes->get('students/edit/(:num)', 'Admin::editStudent/$1');
     $routes->post('students/update/(:num)', 'Admin::updateStudent/$1');
     $routes->get('students/delete/(:num)', 'Admin::deleteStudent/$1');
-    $routes->get('students/detail/(:num)', 'Admin::detail/$1'); // Route untuk detail mahasiswa
+    $routes->get('students/detail/(:num)', 'Admin::detail/$1');
 });
 
 // Enrollment Management
