@@ -178,11 +178,7 @@ Mission3-Proyek3/
 
 ## 👥 Anggota Tim
 
-| Nama | NIM | Role |
-|------|-----|------|
-| [Nama Anggota 1] | [NIM] | [Role] |
-| [Nama Anggota 2] | [NIM] | [Role] |
-| [Nama Anggota 3] | [NIM] | [Role] |
+Ersya Hasby Satria - 241511072
 
 ---
 
@@ -195,11 +191,11 @@ Proyek ini dilisensikan di bawah [MIT License](./CI4%20-%20Mission3/LICENSE).
 ## 📞 Kontak
 
 Jika ada pertanyaan atau saran, silakan hubungi:
-- 📧 Email: [email@example.com]
+- 📧 Email: [ersya.hasby.tif24@polban.ac.id]
 - 🌐 GitHub: [ErsyaHasby](https://github.com/ErsyaHasby)
 
 ---
 
 <p align="center">
-  <sub>🏫 Polban - Semester 3 - Proyek 3 | 2024/2025</sub>
+  <sub>🏫 Polban - Semester 3 - Proyek 3 | 2025/2026</sub>
 </p>
